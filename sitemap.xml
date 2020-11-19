@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://haoshen.ltd/2020/11/16/hello-world/</loc>
+    
+    <lastmod>2020-11-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haoshen.ltd/2020/11/19/Text/</loc>
+    
+    <lastmod>2020-11-19</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://haoshen.ltd/arithmetic/index.html</loc>
+    
+    <lastmod>2020-11-17</lastmod>
+    
+  </url>
+  
+
+  <url>
+    <loc>http://haoshen.ltd/</loc>
+    <lastmod>2020-11-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+
+  
+</urlset>
