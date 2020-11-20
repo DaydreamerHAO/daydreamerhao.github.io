@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://haoshen.ltd/datastructure/index.html</loc>
-    <lastmod>2020-11-20</lastmod>
-  </url>
-  <url>
     <loc>http://haoshen.ltd/2020/11/16/hello/</loc>
     <lastmod>2020-11-20</lastmod>
   </url>
