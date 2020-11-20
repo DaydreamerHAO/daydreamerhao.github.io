@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://haoshen.ltd/2020/11/20/abc/</loc>
+    <loc>http://haoshen.ltd/2020/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/</loc>
     
     <lastmod>2020-11-20</lastmod>
     
@@ -17,13 +17,6 @@
   
   <url>
     <loc>http://haoshen.ltd/datastructure/%E5%8D%95%E9%93%BE%E8%A1%A8.html</loc>
-    
-    <lastmod>2020-11-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://haoshen.ltd/2020/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/</loc>
     
     <lastmod>2020-11-20</lastmod>
     
@@ -66,13 +59,13 @@
   </url>
 
   
+
+  
   <url>
-    <loc>http://haoshen.ltd/tags/arithmetic/</loc>
+    <loc>http://haoshen.ltd/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2020-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
-  
-
   
 </urlset>
