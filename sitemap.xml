@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://haoshen.ltd/tags/index.html</loc>
+    <loc>http://haoshen.ltd/2020/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/</loc>
     
     <lastmod>2020-11-21</lastmod>
     
   </url>
   
   <url>
-    <loc>http://haoshen.ltd/2020/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/</loc>
+    <loc>http://haoshen.ltd/tags/index.html</loc>
     
     <lastmod>2020-11-21</lastmod>
     
@@ -74,7 +74,7 @@
 
   
   <url>
-    <loc>http://haoshen.ltd/tags/%E5%8D%95%E9%93%BE%E8%A1%A8/</loc>
+    <loc>http://haoshen.ltd/tags/%E9%93%BE%E8%A1%A8/</loc>
     <lastmod>2020-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -84,20 +84,6 @@
   
   <url>
     <loc>http://haoshen.ltd/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2020-11-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://haoshen.ltd/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2020-11-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://haoshen.ltd/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%AE%97%E6%B3%95/c/</loc>
     <lastmod>2020-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
