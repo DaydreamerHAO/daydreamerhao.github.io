@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://haoshen.ltd/2020/12/24/Qt%EF%BC%881%EF%BC%89/</loc>
+    
+    <lastmod>2020-12-24</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://haoshen.ltd/2020/11/16/Te/</loc>
     
     <lastmod>2020-12-13</lastmod>
@@ -67,15 +74,22 @@
 
   <url>
     <loc>http://haoshen.ltd/</loc>
-    <lastmod>2020-12-13</lastmod>
+    <lastmod>2020-12-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>http://haoshen.ltd/tags/Qt/</loc>
+    <lastmod>2020-12-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://haoshen.ltd/tags/%E9%93%BE%E8%A1%A8/</loc>
-    <lastmod>2020-12-13</lastmod>
+    <lastmod>2020-12-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -83,15 +97,22 @@
 
   
   <url>
+    <loc>http://haoshen.ltd/categories/Qt/</loc>
+    <lastmod>2020-12-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://haoshen.ltd/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2020-12-13</lastmod>
+    <lastmod>2020-12-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://haoshen.ltd/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E9%93%BE%E8%A1%A8/</loc>
-    <lastmod>2020-12-13</lastmod>
+    <lastmod>2020-12-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
