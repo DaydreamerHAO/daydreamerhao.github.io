@@ -4,11 +4,86 @@
   
     
     <entry>
-      <title>Qt（1）</title>
+      <title>Qt相关语法</title>
+      <link href="2020/12/26/Qt%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95/"/>
+      <url>2020/12/26/Qt%E7%9B%B8%E5%85%B3%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Qt相关语法"><a href="#Qt相关语法" class="headerlink" title="Qt相关语法"></a>Qt相关语法</h1><h4 id="size"><a href="#size" class="headerlink" title="size()"></a>size()</h4><p>条件:&ensp; <code>QPushButton a;</code><br>用途:&ensp; 获取a的size,可由一个QSize对象获取<br>例子:&ensp; <code>QSize b=a.size();</code><br><strong>注意</strong>:&ensp; b应该是一个二维值,因为size有宽和长</p><h4 id="resize-const-const"><a href="#resize-const-const" class="headerlink" title="resize(const,const)"></a>resize(const,const)</h4><p>条件:&ensp; <code>QPushButton a;</code><br>用途:&ensp; 修改按钮a的size<br>例子:&ensp; <code>a.resize(40,40);</code><br><strong>注意</strong>:</p><h4 id="qDebug的使用"><a href="#qDebug的使用" class="headerlink" title="qDebug的使用"></a>qDebug的使用</h4><p>条件:&ensp; <code>#include &lt;QDebug&gt;</code><br>用途:&ensp; 与C++语法cout一样,用作打印<br>例子:&ensp; <code>qDebug() &lt;&lt;a &lt;&lt;str ;</code><br><strong>注意</strong>:&ensp; 这里是qDebug()而不是QDebug。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Qt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Qt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Qt—信号与槽</title>
+      <link href="2020/12/26/Qt%E2%80%94%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/"/>
+      <url>2020/12/26/Qt%E2%80%94%E4%BF%A1%E5%8F%B7%E4%B8%8E%E6%A7%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="信号与槽"><a href="#信号与槽" class="headerlink" title="信号与槽"></a>信号与槽</h1><a id="more"></a><h4 id="connent函数"><a href="#connent函数" class="headerlink" title="connent函数"></a>connent函数</h4><p> <strong>connect函数参数:</strong><br> <strong>1. 信号发出者,指针类型。</strong><br> <strong>2. 处理的信号,&amp;取地址,发送者的类名::信号名。</strong><br> <strong>3. 信号接收者。</strong><br> <strong>4. 槽函数:信号处理函数,函数接收者的类名::信号名。</strong></p><p>例如:</p><pre><code>connect(&amp;a,&amp;QPushButton::pressed,this,&amp;MainWidget::close);/* * &amp;a 信号发出者,指针类型 * &amp;QPushButton::pressed 处理的信号,&amp;取地址,发送者的类名::信号名 * this 信号接收者 * &amp;MainWidget::close 槽函数:信号处理函数,函数接收者的类名::信号名 */</code></pre><p>解释:a是一个按钮,当你pressed这个按钮后,a发出一个信号,给this对象(也就是父对象),然后this接受后,作出close的行为。</p><p>这里的close和pressed皆为标准函数,如何自己自定义一个槽函数呢?<br>首先,我需要在头文件里声明一个函数:</p><pre><code>public:void mySlot();</code></pre><p>然后,我需要在cpp里实现这个函数:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">void MainWidget::mySlot()</span><br><span class="line">&#123;</span><br><span class="line">    b-&gt;setText(&quot;123&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最后,在connnect里引用:</p><pre><code>connect(b,&amp;QPushButton::released,this,&amp;MainWidget::mySlot);</code></pre><p><strong>注意:<br>      1. 槽函数需要和信号一致(参数,返回值)<br>      2. 由于信号都是没有返回值的,所以槽函数一定没有返回值</strong></p><p><strong>什么时候需要自定义信号?</strong><br>比如,你老板可以命令你做什么事,但是你不能直接命令老板做事,你需要先私下里发个信息给老板,等待老板确定并执行。这里的这个信息,就是你要自定义的信号。</p><h4 id="如何自定义信号-无参数"><a href="#如何自定义信号-无参数" class="headerlink" title="如何自定义信号(无参数)?"></a>如何自定义信号(无参数)?</h4><p>1.你要在子对象的.h文件里里创建signal声明:</p><pre><code>signals:void mySignal();</code></pre><p>2.接着在.h文件里创建一个送出这个信号的函数:</p><pre><code>public:void sendSlot();</code></pre><p>3.然后在.cpp文件里实现这个函数:</p><pre><code>void SubWidget::sendSlot()&#123;    emit mySignal();&#125;</code></pre><p>4.在.cpp里运用connect函数将这个信号发给父对象:</p><pre><code>  connect(&amp;a,&amp;QPushButton::clicked,this,&amp;SubWidget::sendSlot);</code></pre><p>5.在父对象的.h文件里,创建一个接收到了这个信号后的处理函数:</p><pre><code>public:void dealSub();</code></pre><p>6.在父对象的.cpp文件里,实现这个函数,就是写你要的操作:</p><pre><code>void MainWidget::dealSub()&#123;    this-&gt;show();    w.hide();&#125;</code></pre><p>7.在父对象运用connect函数,接收信号:<br><strong>注意!!!这里的&amp;SubWidget::mySignal,发送的是信号名!!!而不是sendSlot函数,作为接收者,接收的是这个信号</strong></p><pre><code>connect(&amp;w,&amp;SubWidget::mySignal,this ,&amp;MainWidget::dealSub);</code></pre><h4 id="如何自定义信号-有参数"><a href="#如何自定义信号-有参数" class="headerlink" title="如何自定义信号(有参数)?"></a>如何自定义信号(有参数)?</h4><p>大致步骤与无参定义信号差不多,不同处已<strong>加粗标记</strong><br>1.你要在子对象的.h文件里里创建signal声明:</p><pre><code>signals:void mySignal(int,QString);</code></pre><p>2.接着在.h文件里创建一个送出这个信号的函数:</p><pre><code>public:void sendSlot();</code></pre><p>3.然后在.cpp文件里实现这个函数<strong>并填写上你要添加的参数</strong>:</p><pre><code>void SubWidget::sendSlot()&#123;  emit mySignal(250,&quot;我是子窗口&quot;);&#125;</code></pre><p>4.在.cpp里运用connect函数将这个信号发给父对象:</p><pre><code>  connect(&amp;a,&amp;QPushButton::clicked,this,&amp;SubWidget::sendSlot);</code></pre><p>5.在父对象的.h文件里,创建一个接收到了这个信号后的处理函数,<strong>因为信号是有参数的所以你的槽函数也要有参数</strong>:</p><pre><code>public:void dealSub(int,QString);</code></pre><p>6.在父对象的.cpp文件里,实现这个函数,就是写你要的操作:</p><pre><code>void MainWidget::dealSub(int,QString)&#123;    this-&gt;show();    w.hide();    qDebug() &lt;&lt;a &lt;&lt;str ;//打印a和str的值,详细信息请去Qt相关语法&#125;</code></pre><p>7.在父对象运用connect函数,接收信号:<br><strong>注意!!!这里的&amp;SubWidget::mySignal,发送的是信号名!!!而不是sendSlot函数,作为接收者,接收的是这个信号</strong></p><pre><code>connect(&amp;w,&amp;SubWidget::mySignal,this ,&amp;MainWidget::dealSub);</code></pre><h4 id="信号的重构问题"><a href="#信号的重构问题" class="headerlink" title="信号的重构问题"></a>信号的重构问题</h4><p>信号是可以重构的:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public:</span><br><span class="line">void mySignal();</span><br><span class="line">void mySignal(int,QString);</span><br></pre></td></tr></table></figure><p>此时当你在父对象里创建connect函数与子对象发来的函数相连时:</p><pre><code>  connect(&amp;w,&amp;SubWidget::mySignal,this ,&amp;MainWidget::dealSub);</code></pre><p>会发生报错,错误原因:<strong>子对象发送的这个mySignal,父对象不知道你发的是无参的还是有参的。</strong><br>所以你需要用<strong>指针来分别指向有参和无参信号函数</strong>:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connect(&amp;c,&amp;QPushButton::pressed,this,&amp;MainWidget::showchild);</span><br><span class="line">void (SubWidget::*funSignal)()&#x3D;&amp;SubWidget::mySignal;  &#x2F;&#x2F;这个指针要加上作用域SubWidget::,因为你这个信号是属于SubWidget::子类的</span><br><span class="line">                                                      &#x2F;&#x2F;C++用指针来指定函数★</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Qt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Qt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Qt小知识</title>
+      <link href="2020/12/26/Qt%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
+      <url>2020/12/26/Qt%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Qt知识点"><a href="#Qt知识点" class="headerlink" title="Qt知识点"></a>Qt知识点</h1><a id="more"></a><h4 id="程序的构建可能会失败问题"><a href="#程序的构建可能会失败问题" class="headerlink" title="程序的构建可能会失败问题"></a>程序的构建可能会失败问题</h4><p><img src="C:\Users\LENOVO\Desktop\1.jpg"><br>每次构建一次项目时,它都会生成一个这样的文件,这个文件的意思是,你本机电脑的构建目录,它与QT里的构建目录挂钩:<br><img src="C:\Users\LENOVO\Desktop\3.jpg"><br>所以当你使用别的程序时,要把这个文件给删掉再构建不然会出错,因为你和他在构建这个程序时目录是不一样的</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Qt </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Qt </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Qt(1)</title>
       <link href="2020/12/24/Qt%EF%BC%881%EF%BC%89/"/>
       <url>2020/12/24/Qt%EF%BC%881%EF%BC%89/</url>
       
-        <content type="html"><![CDATA[<h1 id="Qt（1）"><a href="#Qt（1）" class="headerlink" title="Qt（1）"></a>Qt（1）</h1><hr><a id="more"></a><blockquote><p>今天的QT学习：<br>（1）Qt应用程序框架<br>（2）父对象的指定&lt;就是将按钮绑定到窗口上&gt;<br>（3）实现两个独立的窗口<br>（4）<strong>信号与槽</strong></p></blockquote><p><strong>Qt应用程序框架：</strong><br>main.cpp</p><pre><code>#include &quot;mywidget.h&quot;#include &lt;QApplication&gt;  //QApplication应用程序类                         //QT头文件没有.h                        //头文件和类名一样                        //前两个字母是大写int main(int argc, char *argv[])&#123;    //有且只有一个应用程序类的对象    QApplication a(argc, argv);    //MyWidget继承于QWidget, QWidget是一个窗口基类    //所以MyWidget也是窗口类    //w就是一个窗口    MyWidget w;    //窗口创建默认是隐藏的，需要show    w.show();    //a.exec();  让程序一直执行，等待用户操作 or 等待事件的发生    //return 0;    return a.exec();&#125;</code></pre><p>mywidget.h</p><pre><code>#ifndef MYWIDGET_H#define MYWIDGET_H#include &lt;QWidget&gt;class MyWidget : public QWidget&#123;    Q_OBJECT   //信号与槽的时候需要public:    MyWidget(QWidget *parent = nullptr);    ~MyWidget();//析构函数，用来扫尾的，就是释放内存等功能&#125;;#endif // MYWIDGET_H</code></pre><p>mywidget.cpp</p><pre><code>#include &quot;mywidget.h&quot;MyWidget::MyWidget(QWidget *parent)    : QWidget(parent)&#123;&#125;MyWidget::~MyWidget()&#123;&#125;</code></pre><p>就是mywidget对象</p><p><strong>父对象的指定&lt;就是将按钮绑定到窗口上&gt;</strong><br>父对象指定有两种方法：<br> 1） setParent</p><pre><code>QPushButton b;b.setText(&quot;^_^&quot;);  //给标题设置内容b.setParent(&amp;w);b.move(100,100);  //以像素点为单位</code></pre><ol start="2"><li><p>通过构造函数传参</p><p> QPushButton c(&amp;w);  //通过构造函数传参<br> c.setText(“abc”);</p></li></ol><p>指定父对象，只需要父对象显示，上面的子对象自动显示，这样就不需要一直用show</p><p><strong>实现两个独立的窗口</strong></p><ol><li>右击你的项目add new file</li><li>添加C++ class</li><li>命名，选择基类（父类）为QWidget，下一步</li><li>修改你要放入的文件</li></ol><p><strong>信号与槽</strong><br>主要是connect函数<br>connect函数参数：</p><ol><li><p>信号发出者,指针类型。</p></li><li><p>处理的信号,&amp;取地址,发送者的类名：：信号名。 </p></li><li><p>信号接收者。</p></li><li><p>槽函数：信号处理函数,函数接收者的类名：：信号名。<br>例如：</p><p>connect(&amp;a,&amp;QPushButton::pressed,this,&amp;MainWidget::close);<br>/*</p><ul><li>&amp;a 信号发出者,指针类型</li><li>&amp;QPushButton::pressed 处理的信号,&amp;取地址,发送者的类名：：信号名</li><li>this 信号接收者</li><li>&amp;MainWidget::close 槽函数：信号处理函数,函数接收者的类名：：信号名</li><li>/<br>解释：a是一个按钮，当你pressed这个按钮后，a发出一个信号，给this对象（也就是父对象），然后this接受后，作出close的行为。</li></ul></li></ol><p>这里的close和pressed皆为标准函数，如何自己自定义一个槽函数呢？<br>首先，我需要在头文件里声明一个函数：</p><pre><code>public:void mySlot();</code></pre><p>然后，我需要在cpp里实现这个函数：</p><p>void MainWidget::mySlot()<br>{<br>    b-&gt;setText(“123”);<br>}<br>最后，在connnect里引用：</p><pre><code>connect(b,&amp;QPushButton::released,this,&amp;MainWidget::mySlot);</code></pre><p>注意：<br>     * 自定义槽，普通函数用法<br>     * Qt5：任意的成员函数，普通全局函数，静态函数<br>     * <strong>槽函数需要和信号一致(参数，返回值)</strong><br>     * <strong>由于信号都是没有返回值的，所以槽函数一定没有返回值</strong></p><p>什么时候需要自定义信号？比如，你老板可以命令你做什么事，但是你不能直接命令老板做事，你需要先私下里发个信息给老板，等待老板确定并执行。这里的这个信息，就是你要自定义的信号。</p><p>如何自定义信号？<br>1.你要在子对象的.h文件里里创建signal声明：</p><pre><code>signals:void mySignal();</code></pre><p>2.接着在.h文件里创建一个送出这个信号的函数:</p><pre><code>public:void sendSlot();</code></pre><p>3.然后在.cpp文件里实现这个函数：</p><pre><code>void SubWidget::sendSlot()&#123;    emit mySignal();&#125;</code></pre><p>4.在.cpp里运用connect函数将这个信号发给父对象:</p><pre><code>  connect(&amp;a,&amp;QPushButton::clicked,this,&amp;SubWidget::sendSlot);</code></pre><p>5.在父对象的.h文件里，创建一个接收到了这个信号后的处理函数:</p><pre><code>public:void dealSub();</code></pre><p>6.在父对象的.cpp文件里，实现这个函数，就是写你要的操作:</p><pre><code>void MainWidget::dealSub()&#123;    this-&gt;show();    w.hide();&#125;</code></pre><p>7.在父对象运用connect函数，接收信号：<br>注意！！！这里的&amp;SubWidget::mySignal，发送的是信号名！！！而不是sendSlot函数，作为接收者，接收的是这个信号</p><pre><code>connect(&amp;w,&amp;SubWidget::mySignal,this ,&amp;MainWidget::dealSub);</code></pre><p><strong>项目03_SigalAndSlot实现的是两个窗口，一个父窗口一个子窗口，一开始子窗口是隐藏的，你按父窗口上的按键可以隐藏父窗口显示子窗口，然后你按子窗口上的按键可以隐藏子窗口，显示父窗口</strong></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Qt-1"><a href="#Qt-1" class="headerlink" title="Qt(1)"></a>Qt(1)</h1><hr><a id="more"></a><blockquote><p>今天的QT学习:<br>(1)Qt应用程序框架<br>(2)父对象的指定&lt;就是将按钮绑定到窗口上&gt;<br>(3)实现两个独立的窗口<br>(4)<strong>信号与槽</strong></p></blockquote><p><strong>Qt应用程序框架:</strong><br>main.cpp</p><pre><code>#include &quot;mywidget.h&quot;#include &lt;QApplication&gt;  //QApplication应用程序类                         //QT头文件没有.h                        //头文件和类名一样                        //前两个字母是大写int main(int argc, char *argv[])&#123;    //有且只有一个应用程序类的对象    QApplication a(argc, argv);    //MyWidget继承于QWidget, QWidget是一个窗口基类    //所以MyWidget也是窗口类    //w就是一个窗口    MyWidget w;    //窗口创建默认是隐藏的,需要show    w.show();    //a.exec();  让程序一直执行,等待用户操作 or 等待事件的发生    //return 0;    return a.exec();&#125;</code></pre><p>mywidget.h</p><pre><code>#ifndef MYWIDGET_H#define MYWIDGET_H#include &lt;QWidget&gt;class MyWidget : public QWidget&#123;    Q_OBJECT   //信号与槽的时候需要public:    MyWidget(QWidget *parent = nullptr);    ~MyWidget();//析构函数,用来扫尾的,就是释放内存等功能&#125;;#endif // MYWIDGET_H</code></pre><p>mywidget.cpp</p><pre><code>#include &quot;mywidget.h&quot;MyWidget::MyWidget(QWidget *parent)    : QWidget(parent)&#123;&#125;MyWidget::~MyWidget()&#123;&#125;</code></pre><p>就是mywidget对象</p><p><strong>父对象的指定&lt;就是将按钮绑定到窗口上&gt;</strong><br>父对象指定有两种方法:</p><ol><li><p>setParent</p><p>QPushButton b;<br>b.setText(“^_^”);  //给标题设置内容<br>b.setParent(&amp;w);<br>b.move(100,100);  //以像素点为单位</p></li><li><p>通过构造函数传参</p><p> QPushButton c(&amp;w);  //通过构造函数传参<br> c.setText(“abc”);</p></li></ol><p>指定父对象,只需要父对象显示,上面的子对象自动显示,这样就不需要一直用show</p><p><strong>实现两个独立的窗口</strong></p><ol><li>右击你的项目add new file</li><li>添加C++ class</li><li>命名,选择基类(父类)为QWidget,下一步</li><li>修改你要放入的文件</li></ol><p><strong>信号与槽</strong><br>关于信号与槽,移步至《Qt—信号与槽》</p><p><strong>项目03_SigalAndSlot实现的是两个窗口,一个父窗口一个子窗口,一开始子窗口是隐藏的,你按父窗口上的按键可以隐藏父窗口显示子窗口,然后你按子窗口上的按键可以隐藏子窗口,显示父窗口</strong></p>]]></content>
       
       
       <categories>
