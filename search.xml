@@ -58,7 +58,7 @@
       <link href="2020/12/26/Qt%E2%80%94%E5%B0%8F%E7%9F%A5%E8%AF%86/"/>
       <url>2020/12/26/Qt%E2%80%94%E5%B0%8F%E7%9F%A5%E8%AF%86/</url>
       
-        <content type="html"><![CDATA[<h1 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h1><a id="more"></a><h4 id="程序的构建可能会失败问题"><a href="#程序的构建可能会失败问题" class="headerlink" title="程序的构建可能会失败问题"></a>程序的构建可能会失败问题</h4><p><img src="D:\Blog\source\images\1.jpg"><br>每次构建一次项目时,它都会生成一个这样的文件,这个文件的意思是,你本机电脑的构建目录,它与QT里的构建目录挂钩:<br><img src="D:\Blog\source\images\2.jpg"><br>所以当你使用别的程序时,要把这个文件给删掉再构建不然会出错,因为你和他在构建这个程序时目录是不一样的</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="小知识"><a href="#小知识" class="headerlink" title="小知识"></a>小知识</h1><a id="more"></a><h4 id="程序的构建可能会失败问题"><a href="#程序的构建可能会失败问题" class="headerlink" title="程序的构建可能会失败问题"></a>程序的构建可能会失败问题</h4><p><img src="%5Cimages%5C1.jpg"><br>每次构建一次项目时,它都会生成一个这样的文件,这个文件的意思是,你本机电脑的构建目录,它与QT里的构建目录挂钩:<br><img src="images%5C2.jpg"><br>所以当你使用别的程序时,要把这个文件给删掉再构建不然会出错,因为你和他在构建这个程序时目录是不一样的</p>]]></content>
       
       
       <categories>
